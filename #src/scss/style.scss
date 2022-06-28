@@ -1,0 +1,127 @@
+//<МИКСИНЫ>===============================================================================================
+@import "mixins";
+
+//<Подключаем шрифты>=====================================================================================
+//&display=swap&subset=cyrillic-ext
+@import "fonts";
+
+//<Иконочные шрифты>=======================================================================================
+@import "icons";
+//<Шрифт по умолчанию>=====================================================================================
+$fontFamily: "";
+
+//!ПЕРЕМЕННЫЕ ЦВЕТА ========================================================================================
+
+//!<ПЕРЕМЕННЫЕ>=============================================================================================
+// высота шрифта браузера по умолчанию 16px
+$default: 16;
+// ширина минимального размера экрана
+$minWidth: 320;
+//  ширина макета 1920/16 = 120 em
+$maxWidth: 1600;
+// ширина определенного мною контейнера для коннтентной части
+$maxWidthContainer: 1140;
+// падинг на контейнер при уменьшении размерая экрана
+$addPading: 7;
+
+//<МЕДИА ЗАПРОСЫ  СЕТКА>=====================================================================================
+$valueMd2: 1366; // md 2
+$valueMd3: 1024; // md 3
+$valueMd4: 768; // md 4
+$valueMd5: 480; // md 5
+
+$md1: ($maxWidthContainer + $addPading) / $default + em;
+$md2: ($valueMd2 - 0.02) / $default + em;
+$md3: ($valueMd3 - 0.02) / $default + em;
+$md4: ($valueMd4 - 0.02) / $default + em;
+$md5: ($valueMd5 - 0.02) / $default + em;
+
+//<ОБНУЛЕНИЕ>===============================================================================================
+@import "null";
+//<ОСНОВНАЯ СЕТКА>=========================================================================================
+// падинг на контейнер определен в переменных
+
+// .container {
+// 	position: relative;
+// 	margin-left: auto;
+// 	margin-right: auto;
+// 	max-width: rem($maxWidthContainer);
+
+// 	@media (max-width: (($addPading * 2 + $maxWidthContainer) / $default + em )) {
+// 		padding-left: #{$addPading + px};
+// 		padding-right: #{$addPading + px};
+// 		max-width: calc(#{rem($maxWidthContainer)} + #{rem($addPading)} + #{rem($addPading)});
+// 	}
+// }
+
+.container {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: calc(#{rem($maxWidthContainer)} + #{rem($addPading)} + #{rem($addPading)});
+	padding-left: #{$addPading + px};
+	padding-right: #{$addPading + px};
+}
+
+//<ОСНОВНАЯ СЕТКА>=========================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>===================================================================
+//@import "datepicker";
+//@import "lightgallery";
+//@import "pagging";
+//@import "popup";
+
+@import "header";
+@import "footer";
+@import "home";
+@import "bloks";
+@import "myform";
+@import "custom-select";
+//@import "forms";
+
+//@import "spoler";
+
+//<ОБОЛОЧКА>===========================================================================================================
+._ibg {
+	position: relative;
+
+	// ._ibg__foto
+
+	img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+
+body {
+	//color: #000;
+
+	background-color: rgb(218, 203, 203);
+
+	&._active {
+		overflow: hidden;
+	}
+	&.lock {
+		overflow: hidden;
+	}
+}
+.wrapper {
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	&._loaded {
+	}
+}
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+.page {
+	flex: 1 1 auto;
+}
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================

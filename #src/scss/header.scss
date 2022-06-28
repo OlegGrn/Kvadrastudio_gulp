@@ -1,0 +1,142 @@
+//====================================================================================================
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	//height: rem(140);// высота появления класса ._scroll
+
+	@media (max-width: $md4) {
+		//height: rem(40); //высота появления класса ._scroll
+	}
+
+	&._scroll {
+		// стили при классе ._scroll влияющие на высоту блока
+		.header__row {
+			// 	min-height: rem(70);
+			@media (max-width: $md3) {
+				//min-height: rem(40);
+			}
+		}
+		.header__wrapper {
+			//background-color: hsla(0, 0%, 100%, 0.98);
+		}
+	}
+
+	// .header__wrapper
+
+	&__wrapper {
+		transition: background-color 0.3s ease 0s;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 50;
+	}
+}
+
+//====================================================================================================
+
+//Burger
+
+.menu {
+	// .menu__body
+
+	&__body {
+	}
+
+	// .menu__list
+
+	&__list {
+		@media (min-width: $md4) {
+		}
+	}
+
+	// .menu__link
+	&__link {
+	}
+}
+
+@media (max-width: $md4) {
+	.burger {
+		position: relative;
+		z-index: 5;
+		display: block;
+		width: 30px;
+		height: 18px;
+		cursor: pointer;
+		&::before,
+		&::after,
+		span {
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			transition: all 0.3s ease 0s;
+			background-color: #222222;
+		}
+		&::before {
+			content: "";
+			top: 0;
+		}
+		span {
+			bottom: 50%;
+			transform: scale(1) translate(0, 50%);
+		}
+		&::after {
+			content: "";
+			bottom: 0;
+		}
+		&._active {
+			span {
+				transform: scale(0);
+			}
+			&::before {
+				top: 50%;
+				transform: translate(0, -50%) rotate(45deg);
+			}
+			&::after {
+				bottom: 50%;
+				transform: translate(0, 50%) rotate(-45deg);
+			}
+		}
+	}
+	.menu__body {
+		position: fixed;
+		top: 0px;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.76);
+		overflow: auto;
+		transition: all 0.3s ease 0s;
+		&._active {
+			left: 0;
+			// цвет плашки
+			&::after {
+				background-color: rgba(0, 0, 0, 0.76);
+			}
+		}
+		//=========== плашка ======
+		&::after {
+			content: "";
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			//height: px;
+		}
+	}
+
+	.menu__list {
+		li {
+			//font-size: rem(30);
+			//padding-left: 0.4em;
+			&:not(:last-child) {
+				//padding-bottom: 0.6em;
+			}
+		}
+	}
+
+	.menu__link {
+	}
+}

@@ -1,0 +1,52 @@
+._ibg {
+	position: relative;
+
+	// ._ibg__foto
+
+	&__foto {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+
+		// ._ibg__foto_pct
+
+		&_pct {
+			&::before {
+				content: "";
+				width: 100%;
+				display: inline-block;
+				//padding-top:  * 100%;
+			}
+		}
+	}
+}
+
+// .ibg {
+// 	background-position: 40% 0;
+// 	background-repeat: no-repeat;
+// 	background-size: cover;
+// 	picture {
+// 		display: none;
+// 	}
+// }
+// ._ibg-position {
+// 	background-position: 0 100%;
+// }
+
+// для Internet Explorer ======================================
+// html.ie {
+// 	._ibg {
+// 		background-position: center;
+// 		background-size: cover;
+// 		background-repeat: no-repeat;
+// 	}
+// 	._ibg img {
+// 		width: 0;
+// 		height: 0;
+// 		opacity: 0;
+// 		visibility: hidden;
+// 	}
+// }

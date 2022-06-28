@@ -1,0 +1,271 @@
+.form {
+	* {
+		outline: none; //*убирает подсветку по умолчанию вsбранного объекта при движении по поля
+		//* документа при помощи tab
+	}
+	font-size: rem(20);
+	line-height: 1;
+	max-width: rem(800);
+	margin: 0 auto;
+	padding-top: rem(40);
+	padding-bottom: rem(40);
+	// .form__body
+
+	&__body {
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.631) url("../img/icons/loading.gif") center / 50px no-repeat;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.5s ease 0s;
+		}
+
+		&._sending {
+			&::after {
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+	}
+
+	// .form__titl
+
+	&__titl {
+		text-align: center;
+		font-size: rem(40);
+		font-weight: 700;
+		margin-bottom: rem(30);
+	}
+
+	// .form__item
+
+	&__item {
+		margin-bottom: rem(30);
+
+		textarea {
+			min-height: 120px;
+			resize: vertical;
+			padding: 20px;
+		}
+	}
+
+	// .form__label
+
+	&__label {
+		font-size: rem(30);
+		display: block;
+		margin-left: rem(10);
+		margin-bottom: rem(10);
+	}
+
+	// .form__input
+
+	&__input {
+		height: rem(50);
+		padding: 0 20px;
+		border-radius: 5px;
+		width: 100%;
+		font-size: rem(18);
+
+		//*добавляем подсветку input выбранного объекта при движении по поля
+		//* документа,  + при помощи tab
+		&:focus {
+			box-shadow: 0 0 15px rgba(36, 92, 36, 0.718);
+		}
+
+		&._error {
+			box-shadow: 0 0 15px red;
+		}
+	}
+
+	// .form__button
+
+	&__button {
+		display: flex;
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+		min-height: 60px;
+		background-color: rgba(36, 92, 36, 0.4);
+		font-size: rem(30);
+		border-radius: 10px;
+		transition: all 0.3s ease 0s;
+		box-shadow: 0 5px 0 rgb(36, 92, 36);
+		position: relative;
+		top: 0px;
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: rgba(36, 92, 36, 0.5);
+			}
+		}
+		&:active {
+			top: 3px;
+			box-shadow: 0 2px 0 rgb(36, 92, 36);
+		}
+	}
+}
+
+.options {
+	position: relative;
+	// .options__item
+
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+
+	// .options__input
+
+	&__input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		z-index: -5;
+		//display: none; // или так
+
+		&:checked + .options__label::after {
+			transform: scale(1);
+		}
+	}
+
+	// .options__label
+
+	&__label {
+		display: inline-flex;
+		align-items: center;
+		font-size: rem(22);
+		position: relative;
+		cursor: pointer;
+
+		&::before {
+			content: "";
+			flex: 0 0 24px;
+			align-self: flex-start;
+			height: 24px;
+			background-color: rgb(180, 185, 180);
+			border-radius: 50%;
+			border: 1px solid rgb(99, 92, 92);
+			margin-right: 10px;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: 14px;
+			height: 14px;
+			background-color: green;
+			border-radius: 50%;
+			transform: scale(0);
+			transition: transform 0.3s ease 0s;
+		}
+	}
+}
+.file {
+	display: inline-block;
+
+	// .file__item
+
+	&__item {
+		position: relative;
+	}
+
+	// .file__input
+
+	&__input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		font-size: 0;
+		cursor: pointer;
+	}
+
+	// .file__button
+
+	&__button {
+		min-height: 40px;
+		background-color: rgb(133, 90, 90);
+		border-radius: 20px;
+		padding: 0 20px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	// .file__preview
+
+	&__preview {
+		display: inline-block;
+		max-width: 100px;
+		padding: 10px 0 0 0;
+		img {
+			max-width: 100%;
+		}
+	}
+}
+.checkbox {
+	// .checkbox__input
+
+	&__input {
+		display: none;
+
+		&:checked + .checkbox__label::after {
+			transform: scale(1);
+		}
+	}
+
+	// .checkbox__label
+
+	&__label {
+		position: relative;
+		font-size: rem(16);
+		line-height: 1.4;
+		display: inline-flex;
+		align-items: center;
+		cursor: pointer;
+
+		&::before {
+			content: "";
+			flex: 0 0 24px;
+			height: 24px;
+			background-color: #fff;
+			border-radius: 4px;
+			margin-right: 10px;
+			align-self: start;
+			border: 1px solid #000;
+
+			._error & {
+				box-shadow: 0 0 15px red;
+			}
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			width: 14px;
+			height: 14px;
+			border-radius: 3px;
+			background-color: rgb(105, 105, 188);
+			transform: scale(0);
+			transition: transform 0.3s ease 0s;
+		}
+	}
+}
+
+.select {
+}

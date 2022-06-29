@@ -158,17 +158,6 @@
 		display: flex;
 		padding-top: rem(30);
 		justify-content: space-between;
-		li {
-			&:not(:last-child) {
-				&::after {
-					content: "";
-					display: inline-block;
-					width: 2px;
-					height: 2px;
-					background-color: $font;
-				}
-			}
-		}
 	}
 
 	// .menu__link

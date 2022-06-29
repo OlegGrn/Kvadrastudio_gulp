@@ -34,6 +34,127 @@
 	}
 }
 
+.header {
+	// .header__content
+
+	&__content {
+	}
+
+	// .header__header
+
+	&__header {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	// .header__row
+
+	&__row {
+		display: flex;
+		align-items: center;
+		// .header__row_left
+
+		&_left {
+		}
+
+		// .header__row_right
+
+		&_right {
+		}
+	}
+
+	// .header__item
+
+	&__item {
+		&:first-child {
+			margin-right: rem(50);
+		}
+	}
+
+	// .header__address
+
+	&__address {
+		font-style: normal;
+	}
+
+	// .header__text
+
+	&__text {
+		font-size: rem(16);
+		line-height: calc(20 / 16);
+		// .header__text_bold
+
+		&_bold {
+			font-weight: 600;
+		}
+	}
+
+	// .header__phone
+
+	&__phone {
+		color: inherit;
+		display: inline-block;
+		margin-right: rem(10);
+	}
+
+	// .header__btn
+
+	&__btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid $font;
+	}
+
+	// .header__btn-link
+
+	&__btn-link {
+		color: inherit;
+		padding: em(10, 16) em(30, 16);
+	}
+
+	// .header__logo
+
+	&__logo {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	// .header__menu
+
+	&__menu {
+	}
+
+	// .header__mail
+
+	&__mail {
+		color: inherit;
+	}
+}
+
+.menu {
+	// .menu__body
+
+	&__body {
+	}
+
+	// .menu__list
+
+	&__list {
+	}
+
+	// .menu__link
+
+	&__link {
+	}
+}
+.burger {
+}
+
 //====================================================================================================
 
 //Burger

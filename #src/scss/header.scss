@@ -34,52 +34,55 @@
 	}
 }
 
+//====================================================================================================
+
 .header {
+	// .header__wrapper
+
+	&__wrapper {
+	}
+
 	// .header__content
 
 	&__content {
+		padding-top: rem(20);
 	}
 
-	// .header__header
+	// .header__grid
 
-	&__header {
-		position: relative;
-		display: flex;
+	&__grid {
+		display: grid;
+		grid-template-columns: 1fr max-content 1fr;
 		align-items: center;
-		justify-content: space-between;
-		padding-top: rem(40);
-		padding-bottom: rem(47);
-		border-bottom: 1px solid $font;
-	}
-
-	// .header__row
-
-	&__row {
-		display: flex;
-		align-items: center;
-		// .header__row_left
-
-		&_left {
-		}
-
-		// .header__row_right
-
-		&_right {
-		}
+		row-gap: rem(29);
+		column-gap: rem(10);
 	}
 
 	// .header__item
 
 	&__item {
-		&:first-child {
-			margin-right: rem(50);
+		// .header__item_address
+
+		&_address {
 		}
-	}
 
-	// .header__address
+		// .header__item_logo
 
-	&__address {
-		font-style: normal;
+		&_logo {
+		}
+
+		// .header__item_comunication
+
+		&_comunication {
+		}
+
+		// .header__item_menu
+
+		&_menu {
+			grid-column: span 3;
+			padding-top: rem(30);
+			border-top: 1px solid $font;
+		}
 	}
 
 	// .header__text
@@ -87,62 +90,151 @@
 	&__text {
 		font-size: rem(16);
 		line-height: calc(20 / 16);
+
 		// .header__text_bold
 
 		&_bold {
 			font-weight: 600;
 		}
 	}
+}
 
-	// .header__phone
+.header-row {
+	// .header-row__item
 
-	&__phone {
-		color: inherit;
-		display: inline-block;
-		margin-right: rem(6);
-	}
-
-	// .header__btn
-
-	&__btn {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		border: 1px solid $font;
-	}
-
-	// .header__btn-link
-
-	&__btn-link {
-		color: inherit;
-		padding: em(12, 16) em(30, 16);
-	}
-
-	// .header__logo
-
-	&__logo {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -55%);
-	}
-
-	// .header__menu
-
-	&__menu {
-	}
-
-	// .header__mail
-
-	&__mail {
-		color: inherit;
+	&__item {
 	}
 }
 
-//====================================================================================================
+.address-header {
+	display: flex;
+	align-items: center;
+	justify-content: start;
+
+	// .address-header__item
+
+	&__item {
+		&:not(:last-child) {
+			margin-right: rem(50);
+			@media (max-width: (1400 / $default + em)) {
+				margin-right: rem(20);
+			}
+		}
+
+		&_mail {
+			@media (max-width: (1024 / $default + em)) {
+				display: none;
+			}
+		}
+	}
+
+	// .address-header__address
+
+	&__address {
+		font-style: normal;
+		@media (max-width: (1500 / $default + em)) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	// .address-header__mail
+
+	&__mail {
+		color: currentColor;
+	}
+}
+
+.header-logo {
+	@include REM-property-start-min(width, 310, 186);
+	&::before {
+		content: "";
+		display: inline-block;
+		width: 100%;
+		padding-top: 84/310 * 100%;
+	}
+}
+.comunication-header {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	// .comunication-header__item
+
+	&__item {
+		&:not(:last-child) {
+			margin-right: rem(50);
+			@media (max-width: (1400 / $default + em)) {
+				margin-right: rem(20);
+			}
+		}
+
+		&_phone {
+			@media (max-width: (1500 / $default + em)) {
+				display: flex;
+				flex-direction: column;
+				@media (max-width: (1024 / $default + em)) {
+					display: none;
+				}
+			}
+		}
+	}
+
+	// .comunication-header__phone
+
+	&__phone {
+		color: currentColor;
+		display: inline-block;
+		margin-right: rem(8);
+	}
+
+	// .comunication-header__btn
+
+	&__btn {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: rem(192);
+		height: rem(46);
+		border: 1px solid $font;
+		background-color: inherit;
+		@media (max-width: (1400 / $default + em)) {
+			width: rem(180);
+		}
+	}
+
+	// .comunication-header__link
+
+	&__link {
+		color: currentColor;
+	}
+}
+.menu {
+	// .menu__body
+
+	&__body {
+	}
+
+	// .menu__list
+
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	// .menu__link
+
+	&__link {
+		font-size: rem(16);
+		text-transform: uppercase;
+		color: #000000;
+		line-height: calc(32 / 16);
+		letter-spacing: 0.2em;
+	}
+}
 
 //Burger
-
+/*
 .menu {
 	// .menu__body
 
@@ -155,18 +247,12 @@
 		@media (min-width: $md4) {
 		}
 
-		display: flex;
-		padding-top: rem(30);
-		justify-content: space-between;
+		
 	}
 
 	// .menu__link
 	&__link {
-		font-size: rem(16);
-		text-transform: uppercase;
-		color: #000000;
-		line-height: calc(32 / 16);
-		letter-spacing: 0.2em;
+		
 	}
 }
 
@@ -254,3 +340,4 @@
 	.menu__link {
 	}
 }
+*/

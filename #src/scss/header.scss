@@ -56,6 +56,12 @@
 		align-items: center;
 		row-gap: rem(29);
 		column-gap: rem(10);
+
+		@media (max-width: (1000 / $default + em)) {
+			grid-template-columns: 1fr max-content;
+			padding-bottom: rem(20);
+			border-bottom: 1px solid $font;
+		}
 	}
 
 	// .header__item
@@ -64,6 +70,9 @@
 		// .header__item_address
 
 		&_address {
+			@media (max-width: (1000 / $default + em)) {
+				display: none;
+			}
 		}
 
 		// .header__item_logo
@@ -74,6 +83,9 @@
 		// .header__item_comunication
 
 		&_comunication {
+			@media (max-width: (1000 / $default + em)) {
+				display: none;
+			}
 		}
 
 		// .header__item_menu
@@ -82,6 +94,11 @@
 			grid-column: span 3;
 			padding-top: rem(30);
 			border-top: 1px solid $font;
+			@media (max-width: (1000 / $default + em)) {
+				grid-column: span 1;
+				border-top: none;
+				padding-top: 0;
+			}
 		}
 	}
 
@@ -98,14 +115,6 @@
 		}
 	}
 }
-
-.header-row {
-	// .header-row__item
-
-	&__item {
-	}
-}
-
 .address-header {
 	display: flex;
 	align-items: center;
@@ -146,7 +155,15 @@
 }
 
 .header-logo {
-	@include REM-property-start-min(width, 310, 186);
+	//@include REM-property-start-min(width, 310, 186);
+	width: 310px;
+	@media (max-width: (1300 / $default + em)) {
+		width: 250px;
+	}
+	@media (max-width: (1000 / $default + em)) {
+		width: 186px;
+	}
+
 	&::before {
 		content: "";
 		display: inline-block;
@@ -234,35 +251,14 @@
 }
 
 //Burger
-/*
-.menu {
-	// .menu__body
 
-	&__body {
-	}
-
-	// .menu__list
-
-	&__list {
-		@media (min-width: $md4) {
-		}
-
-		
-	}
-
-	// .menu__link
-	&__link {
-		
-	}
-}
-
-@media (max-width: $md4) {
+@media (max-width: (1000 / $default + em)) {
 	.burger {
 		position: relative;
 		z-index: 5;
 		display: block;
-		width: 30px;
-		height: 18px;
+		width: 55px;
+		height: 24px;
 		cursor: pointer;
 		&::before,
 		&::after,
@@ -272,7 +268,7 @@
 			width: 100%;
 			height: 2px;
 			transition: all 0.3s ease 0s;
-			background-color: #222222;
+			background-color: $font;
 		}
 		&::before {
 			content: "";
@@ -340,4 +336,3 @@
 	.menu__link {
 	}
 }
-*/

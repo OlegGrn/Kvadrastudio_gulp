@@ -1,4 +1,7 @@
 //====================================================================================================
+
+//====================================================================================================
+
 .header {
 	position: absolute;
 	top: 0;
@@ -32,15 +35,6 @@
 		width: 100%;
 		z-index: 50;
 	}
-}
-
-//====================================================================================================
-
-.header {
-	// .header__wrapper
-
-	&__wrapper {
-	}
 
 	// .header__content
 
@@ -59,7 +53,7 @@
 
 		@media (max-width: (1000 / $default + em)) {
 			grid-template-columns: 1fr max-content;
-			padding-bottom: rem(20);
+			padding-bottom: rem(19);
 			border-bottom: 1px solid $font;
 		}
 	}
@@ -93,11 +87,13 @@
 		&_menu {
 			grid-column: span 3;
 			padding-top: rem(30);
+			padding-bottom: rem(30);
 			border-top: 1px solid $font;
 			@media (max-width: (1000 / $default + em)) {
 				grid-column: span 1;
 				border-top: none;
 				padding-top: 0;
+				padding-bottom: 0px;
 			}
 		}
 	}
@@ -156,7 +152,7 @@
 
 .header-logo {
 	//@include REM-property-start-min(width, 310, 186);
-	width: 310px;
+	width: 300px;
 	@media (max-width: (1300 / $default + em)) {
 		width: 250px;
 	}
@@ -258,7 +254,7 @@
 		z-index: 5;
 		display: block;
 		width: 55px;
-		height: 24px;
+		height: 18px;
 		cursor: pointer;
 		&::before,
 		&::after,

@@ -174,6 +174,7 @@
 	// .comunication-header__item
 
 	&__item {
+		position: relative;
 		&:not(:last-child) {
 			margin-right: rem(50);
 			@media (max-width: (1400 / $default + em)) {
@@ -210,15 +211,32 @@
 		height: rem(46);
 		border: 1px solid $font;
 		background-color: inherit;
+		transition: background-color 0.5s ease 0s;
 		@media (max-width: (1400 / $default + em)) {
 			width: rem(180);
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: #6b5d54ac;
+				color: #ffffff;
+			}
 		}
 	}
 
 	// .comunication-header__link
 
 	&__link {
+		transition: color 0.3s ease 0s;
 		color: currentColor;
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
 	}
 }
 .menu {

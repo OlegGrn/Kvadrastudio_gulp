@@ -147,6 +147,13 @@
 
 	&__mail {
 		color: currentColor;
+
+		transition: color 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $brown;
+			}
+		}
 	}
 }
 
@@ -199,6 +206,13 @@
 		color: currentColor;
 		display: inline-block;
 		margin-right: rem(8);
+
+		transition: color 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $brown;
+			}
+		}
 	}
 
 	// .comunication-header__btn
@@ -261,6 +275,13 @@
 		color: #000000;
 		line-height: calc(32 / 16);
 		letter-spacing: 0.2em;
+
+		transition: color 0.3s ease 0s;
+		@media (any-hover: hover) {
+			&:hover {
+				color: $brown;
+			}
+		}
 	}
 }
 

@@ -143,6 +143,12 @@ body {
 
 	&__full-screen {
 	}
+
+	// .page__comfort
+
+	&__comfort {
+		@include REM-property-start-min(padding-top, 130, 30);
+	}
 }
 
 //</ОСНОВНОЙ БЛОК>====================================================================================================
@@ -188,7 +194,6 @@ body {
 	// .full-screen__titl
 
 	&__titl {
-		margin-bottom: rem(10);
 	}
 
 	// .full-screen__fon
@@ -252,6 +257,7 @@ body {
 
 	&__decor {
 		margin-bottom: rem(-86);
+		//transform: translate(0, 23%);
 	}
 }
 .titl-main {
@@ -304,6 +310,8 @@ body {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	position: relative;
+	z-index: 5;
 
 	@media (max-width: $md4) {
 		justify-content: center;
@@ -459,5 +467,109 @@ body {
 				background-color: hsla(23, 12%, 37%, 0.4);
 			}
 		}
+	}
+}
+
+.comfort {
+	// .comfort__container
+
+	&__container {
+	}
+
+	// .comfort__grid
+
+	&__grid {
+		display: grid;
+		grid-template-columns: max-content 1fr;
+		grid-template-rows: max-content max-content;
+		@media (max-width: $md4) {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+		}
+	}
+
+	// .comfort__titl
+
+	&__titl {
+		grid-column: span 2;
+		@include REM-property-start-min(padding-top, 107, 16);
+		@include REM-property-start-min(padding-bottom, 100, 16);
+
+		@media (max-width: $md4) {
+			grid-column: span 1;
+		}
+	}
+
+	// .comfort__triangle
+
+	&__triangle {
+	}
+
+	// .comfort__foto
+
+	&__foto {
+	}
+
+	// .comfort__img
+
+	&__img {
+	}
+
+	// .comfort__baner
+
+	&__baner {
+	}
+}
+
+.titl-comfort {
+	@include REM-property-start-min(font-size, 60, 24);
+	line-height: calc(92 / 60);
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+
+	&::before {
+		content: "";
+		float: right;
+		width: 35%;
+		height: 130px;
+		clip-path: polygon(0 0, 100% 0, 100% 100%);
+		shape-outside: polygon(0 0, 100% 0, 100% 100%);
+
+		@media (max-width: (1200 / $default + em)) {
+			width: 30%;
+			height: 90px;
+		}
+
+		@media (max-width: (900 / $default + em)) {
+			height: 0px;
+		}
+	}
+
+	// .titl-comfort__tringle
+
+	&__tringle {
+	}
+
+	// .titl-comfort__bold
+
+	&__bold {
+		font-weight: 400;
+	}
+
+	// .titl-comfort__text
+
+	&__text {
+		font-weight: 300;
+	}
+
+	// .titl-comfort__line
+
+	&__line {
+	}
+}
+.baner-comfort {
+	// .baner-comfort__line
+
+	&__line {
 	}
 }

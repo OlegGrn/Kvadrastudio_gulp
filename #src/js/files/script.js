@@ -39,9 +39,9 @@ function removePading(arr) {
 }
 //!=======================================================================
 
-
-// add point after li class _point-add
 document.addEventListener("DOMContentLoaded", () => {
+
+	//? добаваляем точки - dd point after li class _point-add
 	const allPoint = document.querySelectorAll("._point-add");
 	if (allPoint) {
 		allPoint.forEach((item, ind, arr) => {
@@ -52,6 +52,22 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		})
 	}
+
+	//? прячем меню при скролле ============
+	const hideMenu = function (entries) {
+		entries.forEach((entry) => {
+			const { target, isIntersecting } = entry; // получаем свойства, которые доступны в объекте entry
+			if (isIntersecting) {
+				target.classList.remove('_scroll');
+			} else {
+				target.classList.add('_scroll');// удаляем класс, когда элемент из неё выходит  
+			}
+		})
+	}
+
+	const headerObserver = new IntersectionObserver(hideMenu);
+	headerObserver.observe(document.querySelector(".header"));
+
 });
 
 //? анимация / добабления класса _active при скроле ==============================

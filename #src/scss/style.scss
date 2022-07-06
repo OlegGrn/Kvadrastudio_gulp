@@ -34,10 +34,10 @@ $valueMd4: 768; // md 4
 $valueMd5: 480; // md 5
 
 $md1: ($maxWidthContainer + $addPading) / $default + em;
-$md2: ($valueMd2 - 0.02) / $default + em;
-$md3: ($valueMd3 - 0.02) / $default + em;
-$md4: ($valueMd4 - 0.02) / $default + em;
-$md5: ($valueMd5 - 0.02) / $default + em;
+$md2: ($valueMd2 + 0.02) / $default + em;
+$md3: ($valueMd3 + 0.02) / $default + em;
+$md4: ($valueMd4 + 0.02) / $default + em;
+$md5: ($valueMd5 + 0.02) / $default + em;
 
 //<ОБНУЛЕНИЕ>===============================================================================================
 @import "null";
@@ -480,8 +480,8 @@ body {
 
 	&__grid {
 		display: grid;
-		grid-template-columns: max-content 1fr;
-		grid-template-rows: max-content max-content;
+		grid-template-columns: rem(500) 1fr;
+		grid-template-rows: max-content 1fr;
 		@media (max-width: $md4) {
 			grid-template-columns: 1fr;
 			grid-template-rows: auto;
@@ -492,8 +492,8 @@ body {
 
 	&__titl {
 		grid-column: span 2;
-		@include REM-property-start-min(padding-top, 107, 16);
-		@include REM-property-start-min(padding-bottom, 100, 16);
+		@include REM-property-start-min(padding-top, 107, 54);
+		@include REM-property-start-min(padding-bottom, 96, 9);
 
 		@media (max-width: $md4) {
 			grid-column: span 1;
@@ -508,16 +508,39 @@ body {
 	// .comfort__foto
 
 	&__foto {
+		position: relative;
+		padding-bottom: rem(141);
+		@media (max-width: $md3) {
+			padding-bottom: rem(41);
+		}
+		@media (max-width: $md4) {
+			padding-bottom: 0px;
+			margin-right: -16px;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 38%;
+			z-index: -1;
+			border-right: 1px solid $brown;
+		}
 	}
 
 	// .comfort__img
 
 	&__img {
+		width: 100%;
+		height: rem(500);
 	}
 
 	// .comfort__baner
 
 	&__baner {
+		overflow: hidden;
 	}
 }
 
@@ -527,27 +550,26 @@ body {
 	letter-spacing: 0.02em;
 	text-transform: uppercase;
 
-	&::before {
-		content: "";
-		float: right;
-		width: 35%;
-		height: 130px;
-		clip-path: polygon(0 0, 100% 0, 100% 100%);
-		shape-outside: polygon(0 0, 100% 0, 100% 100%);
-
-		@media (max-width: (1200 / $default + em)) {
-			width: 30%;
-			height: 90px;
-		}
-
-		@media (max-width: (900 / $default + em)) {
-			height: 0px;
-		}
-	}
-
 	// .titl-comfort__tringle
 
 	&__tringle {
+		&::before {
+			content: "";
+			float: right;
+			width: 35%;
+			height: 130px;
+			clip-path: polygon(0 0, 100% 0, 100% 100%);
+			shape-outside: polygon(0 0, 100% 0, 100% 100%);
+
+			@media (max-width: (1200 / $default + em)) {
+				width: 30%;
+				height: 90px;
+			}
+
+			@media (max-width: (900 / $default + em)) {
+				height: 0px;
+			}
+		}
 	}
 
 	// .titl-comfort__bold
@@ -561,15 +583,114 @@ body {
 	&__text {
 		font-weight: 300;
 	}
+	// .titl-comfort__baner
 
-	// .titl-comfort__line
+	&__baner {
+		margin-bottom: rem(141);
+		transform: translate(0, 50%);
+		margin-left: -206px;
+		@media (max-width: (1536 / $default + em)) {
+			margin-left: -189px;
+		}
+		@media (max-width: $md2) {
+			margin-left: -152px;
+		}
 
-	&__line {
+		@media (max-width: $md3) {
+			margin-left: 14px;
+			transform: translate(0, 0);
+			margin-bottom: 41px;
+		}
+		@media (max-width: $md4) {
+			margin-bottom: 0px;
+			margin-top: rem(18);
+		}
+	}
+
+	// .titl-comfort__transform
+
+	&__transform {
+		@media (max-width: (1140 / $default + em)) {
+			display: inline-block;
+			transform: translate(100%, 0);
+		}
+		@media (max-width: $md3) {
+			display: inline;
+			transform: translate(0, 0);
+		}
+	}
+
+	// . titl-comfort__animacia
+
+	&__animacia {
+		@media (min-width: $md3) {
+			transition: transform 0.9s ease 0s;
+			transform: translate(-200%, 0);
+			._active_anim-scroll & {
+				transform: translate(0, 0);
+			}
+		}
+		&_baner {
+			@media (min-width: $md3) {
+				transition: all 0.9s ease 0s;
+				opacity: 0;
+				transform: translate(200%, 0);
+				._active_anim-scroll & {
+					opacity: 1;
+					transform: translate(0, 0);
+				}
+			}
+		}
 	}
 }
 .baner-comfort {
-	// .baner-comfort__line
+	display: flex;
+	height: 100%;
+	justify-content: space-between;
 
-	&__line {
+	// .baner-comfort__left
+
+	&__left {
+		min-width: 190px;
+		@media (max-width: $md3) {
+			min-width: 0;
+			width: 0px;
+		}
+	}
+
+	// .baner-comfort__rigth
+
+	&__rigth {
+		border-left: 4px solid $font;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		@media (max-width: $md3) {
+			border-left: none;
+		}
+		@media (max-width: $md4) {
+			flex: 1 1 auto;
+			height: 126px;
+			position: relative;
+			border-left: 2px solid $font;
+		}
+	}
+
+	// .baner-comfort__foto
+
+	&__foto {
+		width: rem(286);
+		height: rem(326);
+		@media (max-width: (1040 / $default + em)) {
+			width: 100%;
+		}
+		@media (max-width: $md4) {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 49%;
+			height: 100%;
+		}
 	}
 }

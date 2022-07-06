@@ -6,22 +6,15 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	//height: rem(140);// высота появления класса ._scroll
-
-	@media (max-width: $md4) {
-		//height: rem(40); //высота появления класса ._scroll
-	}
+	height: rem(140); // высота появления класса ._scroll
 
 	&._scroll {
 		// стили при классе ._scroll влияющие на высоту блока
-		.header__row {
-			// 	min-height: rem(70);
-			@media (max-width: $md3) {
-				//min-height: rem(40);
-			}
-		}
 		.header__wrapper {
-			//background-color: hsla(0, 0%, 100%, 0.98);
+			background-color: hsla(0, 0%, 100%, 0.95);
+			@media (min-width: (1000 / $default + em)) {
+				transform: translate(0, -62%);
+			}
 		}
 	}
 
@@ -35,6 +28,7 @@
 		left: 0;
 		width: 100%;
 		z-index: 50;
+		transition: transform 0.3s ease 0s;
 	}
 
 	// .header__content

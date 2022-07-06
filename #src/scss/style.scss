@@ -638,10 +638,10 @@ body {
 			@media (min-width: $md3) {
 				transition: all 0.9s ease 0s;
 				opacity: 0;
-				transform: translate(200%, 0);
+				transform: translate(200%, 50%);
 				._active_anim-scroll & {
 					opacity: 1;
-					transform: translate(0, 0);
+					transform: translate(0, 50%);
 				}
 			}
 		}
@@ -726,7 +726,7 @@ body {
 		@media (min-width: $md4) {
 			display: flex;
 			justify-content: space-between;
-			margin: 0 -10px;
+			margin: 0 50px 0 10px;
 		}
 
 		@media (max-width: $md4) {
@@ -734,6 +734,16 @@ body {
 			grid-template-columns: 1fr 1fr;
 			grid-auto-rows: auto;
 			row-gap: 32px;
+		}
+
+		@media (min-width: $md3) {
+			opacity: 0;
+			transform: translate(0, 50%);
+			transition: all 0.8s ease 0s;
+			._active_anim-scroll & {
+				transform: translate(0, 0);
+				opacity: 1;
+			}
 		}
 	}
 
@@ -753,7 +763,16 @@ body {
 		font-family: "AshleyCapitaliSofia";
 		@include REM-property-start-min(font-size, 60, 38);
 		line-height: calc(73 / 60);
-		@include REM-property-start-min(margin-bottom, 30, 4);
+		@include REM-property-start-min(margin-bottom, 18, 4);
+
+		&_icon {
+			position: relative;
+			&::before {
+				content: "\221E";
+				display: inline-block;
+				transform: translate(0, -10%) scale(1.7);
+			}
+		}
 	}
 
 	// .portrait-baner__text

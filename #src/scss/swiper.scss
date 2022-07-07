@@ -56,35 +56,38 @@
 
 // Bullet =============================================
 
-$bullet_color_bg: #fff;
-$bullet-active_color_bg: #303030;
+$bullet_color_bg: #888888;
+$bullet-active_color_bg: #ffffff;
 
 .swiper-pagination-bullet {
-	background-color: $bullet_color_bg;
+	.about__bullet & {
+		width: 50px;
+		height: 2px;
+		background-color: $bullet_color_bg;
+	}
 }
 .swiper-pagination-bullet-active {
-	background-color: $bullet-active_color_bg;
+	.about__bullet & {
+		width: 100px;
+		height: 2px;
+		background-color: $bullet-active_color_bg;
+	}
 }
 
-.main-slider {
+.about {
 	// .main-slider__bulet
 
-	&__bulet {
-		position: absolute;
-		left: 50%;
-		transform: translate(-50%, 0);
-		@include REM-property-start-min(bottom, 30, 10);
-
+	&__bullet {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		column-gap: rem(20);
+		flex-wrap: wrap;
+		margin: 8px 10px 0 10px;
 
 		span {
+			transition: all 0.3s ease 0s;
 			display: inline-block;
-			@include REM-property-start-min(width, 15, 10);
-			@include REM-property-start-min(height, 15, 10);
-			border-radius: 50%;
+			margin: 10px 10px;
 		}
 	}
 }

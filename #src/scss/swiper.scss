@@ -64,6 +64,9 @@ $bullet-active_color_bg: #ffffff;
 		width: 50px;
 		height: 2px;
 		background-color: $bullet_color_bg;
+		@media (max-width: $md3) {
+			width: 16px;
+		}
 	}
 }
 .swiper-pagination-bullet-active {
@@ -71,6 +74,9 @@ $bullet-active_color_bg: #ffffff;
 		width: 100px;
 		height: 2px;
 		background-color: $bullet-active_color_bg;
+		@media (max-width: $md3) {
+			width: 32px;
+		}
 	}
 }
 
@@ -83,11 +89,17 @@ $bullet-active_color_bg: #ffffff;
 		align-items: center;
 		flex-wrap: wrap;
 		margin: 8px 10px 0 10px;
+		@media (max-width: $md3) {
+			margin: 5px 10px 0 10px;
+		}
 
 		span {
 			transition: all 0.3s ease 0s;
 			display: inline-block;
 			margin: 10px 10px;
+			@media (max-width: $md3) {
+				margin: 10px 5px;
+			}
 		}
 	}
 }

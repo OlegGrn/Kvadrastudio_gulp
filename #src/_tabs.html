@@ -1,0 +1,35 @@
+<!-- 1. Внешнему блоку управления табами (родителю) - data-tab-tabs="tabs" (содержимое атрибута "..." не имеет значения)
+2. Кнопкам управления data-tab-btn="tab_01" (содержимое это путь к блоку)
+3. Блокам data-tab-block="tab_01"
+4. Блоку который нужно открыть первым по умолчанию класс "_active_first" -->
+
+
+
+<div class="tabs">
+	<nav class="tabs__nav" data-tab-tabs="tabs">
+		<ul class="tabs__list">
+			<li class="tabs__move _active">
+				<button class="tabs__btn _active" data-tab-btn="tab_01">
+					Частные проекты
+				</button>
+			</li>
+			<li class="tabs__move">
+				<button class="tabs__btn _active_first" data-tab-btn="tab_02">
+					Общественные проекты
+				</button>
+			</li>
+		</ul>
+	</nav>
+
+	<div class="tabs__body">
+		<div class="tabs__block _active" data-tab-block="tab_01">
+			<div class="block-tab"></div>
+		</div>
+
+		<div class="tabs__block" data-tab-block="tab_02">
+			<div class="block-tab"></div>
+		</div>
+	</div>
+
+	<div class="tabs__footer footer-tabs"></div>
+</div>

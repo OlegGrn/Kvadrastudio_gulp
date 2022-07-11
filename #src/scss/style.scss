@@ -26,6 +26,7 @@ $maxWidth: 1920;
 $maxWidthContainer: 1520;
 // падинг на контейнер при уменьшении размерая экрана
 $addPading: 16;
+$addPading-two: 0;
 
 //<МЕДИА ЗАПРОСЫ  СЕТКА>=====================================================================================
 $valueMd2: 1366; // md 2
@@ -64,6 +65,15 @@ $md5: ($valueMd5 + 0.02) / $default + em;
 	max-width: calc(#{rem($maxWidthContainer)} + #{rem($addPading)} + #{rem($addPading)});
 	padding-left: #{$addPading + px};
 	padding-right: #{$addPading + px};
+}
+
+.container-two {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: calc(#{rem($maxWidthContainer)} + #{rem($addPading-two)} + #{rem($addPading-two)});
+	padding-left: #{$addPading-two + px};
+	padding-right: #{$addPading-two + px};
 }
 
 //<ОСНОВНАЯ СЕТКА>=========================================================================================
@@ -290,6 +300,13 @@ body {
 
 	.portfolio__container & {
 		color: $font;
+		@include REM-property-start-min(font-size, 80, 32);
+		line-height: calc(38 / 32);
+		margin-bottom: 24px;
+
+		@media (max-width: $md3) {
+			margin-bottom: rem(20);
+		}
 	}
 
 	// .titl-main__line
@@ -825,7 +842,7 @@ body {
 
 	&__container {
 		padding-top: rem(48);
-		@include REM-property-start-min(padding-bottom, 87, 40);
+		@include REM-property-start-min(padding-bottom, 86, 40);
 		@media (max-width: $md4) {
 			padding-top: rem(46);
 		}
@@ -928,7 +945,8 @@ body {
 }
 
 .slide-about {
-	@include REM-property-start-min(padding-bottom, 164, 52);
+	//@include REM-property-start-min(padding-bottom, 164, 52);
+	padding-bottom: rem(164);
 
 	display: grid;
 	grid-template-columns: max-content 1fr;
@@ -940,7 +958,8 @@ body {
 		grid-template-columns: 1fr;
 		grid-template-rows: auto;
 		row-gap: 18px;
-		padding: 0 0 0 16px;
+		padding-left: 16px;
+		padding-bottom: 35px;
 	}
 
 	&__quotes {
@@ -1040,16 +1059,42 @@ body {
 	// .portfolio__container
 
 	&__container {
+		padding-top: rem(200);
+		overflow: hidden;
+		@media (max-width: $md3) {
+			padding-top: rem(50);
+		}
 	}
 
 	// .portfolio__titl
 
 	&__titl {
+		@media (min-width: $md3) {
+			transition: all 1s ease 0s;
+			transform: translate(0, -300%);
+			opacity: 0;
+
+			._active_anim-scroll & {
+				transform: translate(0, 0%);
+				opacity: 1;
+			}
+		}
 	}
 
 	// .portfolio__decor
 
 	&__decor {
+		position: relative;
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: 50%;
+			left: 14%;
+			width: 14%;
+			height: 500px;
+			background-color: $font;
+		}
 	}
 
 	// .portfolio__label
@@ -1076,16 +1121,25 @@ body {
 	// .tabs__nav
 
 	&__nav {
+		padding: 54px 0px 64px 0;
+		@media (max-width: $md3) {
+			padding: 31px 0px 32px 0;
+		}
 	}
 
 	// .tabs__list
 
 	&__list {
+		display: flex;
+		justify-content: start;
 	}
 
 	// .tabs__move
 
 	&__move {
+		&:not(:last-child) {
+			margin-right: 30px;
+		}
 		&._active {
 		}
 	}
@@ -1094,7 +1148,7 @@ body {
 
 	&__btn {
 		background-color: inherit;
-		@include REM-property-start-min(font-size, 20, 12);
+		@include REM-property-start-min(font-size, 20, 14);
 		letter-spacing: 0.02em;
 		color: #555555;
 		font-weight: 400;
@@ -1102,6 +1156,24 @@ body {
 		&._active {
 			color: $font;
 			font-weight: 600;
+			position: relative;
+
+			&::after {
+				content: "";
+				display: block;
+				position: absolute;
+				bottom: -14px;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: $font;
+			}
+
+			@media (max-width: $md3) {
+				&::after {
+					bottom: -2px;
+				}
+			}
 		}
 	}
 
@@ -1117,6 +1189,23 @@ body {
 }
 
 .block-tab {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: rem(30);
+	row-gap: 112px;
+	padding-bottom: 111px;
+
+	@media (max-width: $md2) {
+		column-gap: rem(16);
+	}
+	@media (max-width: $md3) {
+		row-gap: rem(51);
+		padding-bottom: rem(50);
+	}
+	@media (max-width: (700 / $default + em)) {
+		grid-template-columns: 1fr;
+	}
+
 	// .block-tab__item
 
 	&__item {
@@ -1127,26 +1216,72 @@ body {
 	// .cart-portfolio__foto
 
 	&__foto {
+		//width: 100%;
+		margin-bottom: rem(30);
+		@media (max-width: $md3) {
+			margin-bottom: rem(20);
+		}
+		&::after {
+			content: "";
+			display: block;
+			padding-top: 700/745 * 100%;
+		}
+
+		@media (max-width: (700 / $default + em)) {
+			margin-left: -16px;
+			margin-right: -16px;
+			width: auto;
+
+			&::after {
+				padding-top: 300/375 * 100%;
+			}
+		}
 	}
 
 	// .cart-portfolio__text
 
 	&__text {
-	}
+		@include REM-property-start-min(font-size, 28, 14);
+		line-height: calc(42 / 28);
+		letter-spacing: 0.02em;
+		font-weight: 400;
+		margin-bottom: 25px;
+		text-transform: uppercase;
 
-	// .cart-portfolio__info
-
-	&__info {
-	}
-
-	// .cart-portfolio__address
-
-	&__address {
+		&_address {
+			font-style: normal;
+			font-weight: 300;
+		}
 	}
 
 	// .cart-portfolio__link
 
 	&__link {
+		display: inline-block;
+		color: inherit;
+		font-weight: 400;
+
+		@include REM-property-start-min(font-size, 20, 12);
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		position: relative;
+		&::after {
+			content: "";
+			display: block;
+			position: absolute;
+			bottom: -11px;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			background-color: $font;
+		}
+		margin-top: 12px;
+		@media (max-width: $md3) {
+			margin-top: rem(10);
+			&::after {
+				bottom: -2px;
+			}
+		}
 	}
 }
 
@@ -1154,7 +1289,7 @@ body {
 	background-color: $brown;
 	@include REM-property-start-min(font-size, 60, 24);
 	padding-top: em(50, 60);
-	padding-bottom: em(50, 60);
+	padding-bottom: em(60, 60);
 
 	// .watch-portfolio__link
 

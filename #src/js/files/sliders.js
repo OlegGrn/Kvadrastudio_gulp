@@ -74,7 +74,7 @@ let slider_about = new Swiper('.about__body', {
 	/*количество слайдов на просмотре*/
 	slidesPerView: 1,
 	spaceBetween: 0,
-	autoHeight: true,
+	autoHeight: false,
 	speed: 800,
 
 	/*мультирядность  loop: true - не работет*/

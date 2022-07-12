@@ -376,6 +376,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (tabs) {
 		tabs.addEventListener("click", function (e) {
 
+			if (!e.target.closest("[data-tab-btn]")) return;
+
 			// элемент btn клика
 			let tabBtn = e.target.closest("[data-tab-btn]");
 			// родитель li элемента btn клика
@@ -386,9 +388,9 @@ document.addEventListener("DOMContentLoaded", () => {
 			let allTabBtn = document.querySelectorAll("[data-tab-btn]");
 			let allTabBlock = document.querySelectorAll("[data-tab-block]")
 
-			if (!tabBtn) return;
-			removeActive(allTabBtn, allTabBlock, allLi);
-			addActive(tabBtn, parentTabBtn);
+
+			delActiveArr(allLi, allTabBtn, allTabBlock);
+			addActiveTab(tabBtn, parentTabBtn);
 
 			// добавить класс левому соседу LI (если нужно для стилизации)
 			addPrevClas(parentTabBtn, allLi);
@@ -399,22 +401,14 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (window.innerWidth > 767.98) document.querySelector("._active_first").click();
 
 
-		function removeActive(btns, blocks, allli) {
-			btns.forEach((item) => {
-				item.classList.remove("_active");
-			});
-
-			blocks.forEach((item) => {
-				item.classList.remove("_active");
-			});
-
-			allli.forEach((item) => {
-				item.classList.remove("_active");
-			});
+		function delActiveArr(...args) {
+			for (let arg of arguments) {
+				for (let ar of arg) {
+					ar.classList.remove("_active")
+				}
+			}
 		}
-
-
-		function addActive(btn, li) {
+		function addActiveTab(btn, li) {
 			let path = btn.dataset.tabBtn;
 			let block = document.querySelector(`[data-tab-block="${path}"]`);
 
@@ -423,7 +417,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			li.classList.add("_active");
 
 		}
-
 		function addPrevClas(li, allLi) {
 			let prev = li.previousElementSibling;
 

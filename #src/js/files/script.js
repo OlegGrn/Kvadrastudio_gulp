@@ -147,3 +147,48 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //* ==============================================================
+//?=========== NEW TABS =============================
+/*
+1. Внешнему блоку управления табами (родителю) - data-tab-tabs="tabs" (содержимое атрибута "..." не имеет значения)
+2. Кнопкам управления data-tab-btn="tab_01" (содержимое это путь к блоку)
+3. Блокам data-tab-block="tab_01"
+4. Блоку который нужно открыть первым по умолчанию класс "_active_first"
+*/
+document.addEventListener("DOMContentLoaded", () => {
+
+	const tabs = document.querySelector("[data-tab-tabs]");//controll
+
+	if (tabs) {
+		tabs.addEventListener("click", (e) => {
+			if (!e.target.closest("[data-tab-btn]")) return;
+
+			let tabBtn = e.target.closest("[data-tab-btn]"); // элемент btn клика
+			let parentTabBtn = e.target.closest("li"); // родитель li элемента btn
+			let allLi = tabs.querySelectorAll("li"); // все Li
+			let allTabBtn = document.querySelectorAll("[data-tab-btn]");// все кнопки управления табами
+			let allTabBlock = document.querySelectorAll("[data-tab-block]") // все блоки с табами
+
+			delActiveArr(allLi, allTabBtn, allTabBlock);
+			addActiveTab(tabBtn, parentTabBtn);
+
+			function delActiveArr(...args) {
+				for (let arg of arguments) {
+					for (let ar of arg) {
+						ar.classList.remove("_active")
+					}
+				}
+			}
+			function addActiveTab(btn, li) {
+				let path = btn.dataset.tabBtn;
+				let block = document.querySelector(`[data-tab-block="${path}"]`);
+
+				btn.classList.add("_active");
+				block.classList.add("_active");
+				li.classList.add("_active");
+			}
+		})
+		// первый клик автоматически на выбранной ссылке на экране выше 767.98px
+		//if (window.innerWidth > 767.98) document.querySelector("._active_first").click();		
+		document.querySelector("._active_first").click();
+	}
+});

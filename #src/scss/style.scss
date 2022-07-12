@@ -1070,13 +1070,11 @@ body {
 
 	&__titl {
 		@media (min-width: $md3) {
-			transition: all 1s ease 0s;
+			transition: transform 1s ease 0s;
 			transform: translate(0, -300%);
-			opacity: 0;
 
 			._active_anim-scroll & {
 				transform: translate(0, 0%);
-				opacity: 1;
 			}
 		}
 	}

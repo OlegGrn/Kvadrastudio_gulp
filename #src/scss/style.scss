@@ -190,6 +190,10 @@ body {
 	// .page__look
 
 	&__look {
+		padding-bottom: 50px;
+		@media (max-width: $md3) {
+			padding-bottom: 24px;
+		}
 	}
 }
 
@@ -1231,7 +1235,7 @@ body {
 	}
 	@media (max-width: $md3) {
 		row-gap: rem(51);
-		padding-bottom: rem(50);
+		padding-bottom: 53px;
 	}
 	@media (max-width: (700 / $default + em)) {
 		grid-template-columns: 1fr;
@@ -1297,7 +1301,8 @@ body {
 		line-height: calc(42 / 28);
 		letter-spacing: 0.02em;
 		font-weight: 400;
-		margin-bottom: 25px;
+		//margin-bottom: 25px;
+		@include REM-property-start-min(margin-bottom, 25, 11);
 		text-transform: uppercase;
 
 		&_address {
@@ -1340,7 +1345,7 @@ body {
 		@media (max-width: $md3) {
 			margin-top: rem(10);
 			&::after {
-				top: 18px;
+				top: 13px;
 			}
 		}
 
@@ -1362,7 +1367,7 @@ body {
 	padding-bottom: em(60, 60);
 	@media (max-width: $md3) {
 		padding-top: em(70, 60);
-		padding-bottom: em(68, 60);
+		padding-bottom: em(70, 60);
 	}
 
 	// .watch-portfolio__link
@@ -1561,6 +1566,12 @@ body {
 	// .look__top
 
 	&__top {
+		@include REM-property-start-min(padding-bottom, 50, 25);
+	}
+
+	// .look__why
+
+	&__why {
 	}
 }
 .top-look {
@@ -1671,6 +1682,188 @@ body {
 			&::before {
 				margin-left: 5px;
 			}
+		}
+	}
+}
+
+.why-look {
+	// .why-look__titl
+
+	&__titl {
+		// padding-top: 100px;
+		// padding-bottom: 100px;
+		overflow: hidden;
+		@include REM-property-start-min(padding-top, 100, 1);
+		@include REM-property-start-min(padding-bottom, 100, 22);
+
+		@media (max-width: $md5) {
+			display: flex;
+			flex-direction: column;
+			span {
+				&:last-child {
+					align-self: flex-end;
+					padding-top: 5px;
+				}
+			}
+		}
+	}
+
+	// .why-look__decor
+
+	&__decor {
+		position: relative;
+		&::before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 20%;
+			right: 16%;
+			width: 12%;
+			height: 500px;
+			background-color: $font;
+		}
+	}
+
+	// .why-look__row
+
+	&__row {
+		position: relative;
+		display: flex;
+
+		@media (max-width: $md2) {
+			flex-direction: column-reverse;
+		}
+	}
+
+	// .why-look__foto-left
+
+	&__foto-left {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 500px;
+		// @include REM-property-start-min(width, 500, 170);
+		&::after {
+			content: "";
+			display: block;
+			padding-top: 100%;
+		}
+		@media (max-width: (900 / $default + em)) {
+			width: 49.5%;
+		}
+	}
+	// .why-look__foto-right
+
+	&__foto-right {
+		display: block;
+		width: 100%;
+		max-width: 620px;
+		margin-right: 0;
+		margin-left: auto;
+
+		//@include REM-property-start-min(width, 620, 240);
+
+		&::after {
+			content: "";
+			display: inline-block;
+			padding-top: 98.5%;
+		}
+
+		@media (max-width: (900 / $default + em)) {
+			width: 70%;
+			max-width: auto;
+		}
+	}
+
+	// .why-look__plan
+
+	&__plan {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 286px;
+		pointer-events: none;
+		&::after {
+			content: "";
+			display: block;
+			padding-top: 326 / 286 * 100%;
+		}
+		transform: translate(-19%, 62%);
+
+		@media (max-width: $md2) {
+			bottom: 0;
+			top: auto;
+			left: auto;
+			right: 4%;
+			transform: translate(0%, 0%);
+		}
+		@media (max-width: (900 / $default + em)) {
+			width: 30%;
+		}
+	}
+
+	// .why-look__item
+
+	&__item {
+		flex: 0 0 50%;
+
+		&_right {
+			position: relative;
+			@media (max-width: $md2) {
+				position: static;
+				padding-top: 28%;
+			}
+		}
+
+		&_left {
+			align-self: flex-end;
+			@media (max-width: $md2) {
+				align-self: start;
+				padding-top: 25px;
+			}
+		}
+	}
+
+	// .why-look__label
+
+	&__label {
+		@include REM-property-start-min(font-size, 60, 24);
+		@include REM-property-start-min(line-height, 73, 28);
+		font-weight: 300;
+		font-size: 60px;
+		text-transform: uppercase;
+		letter-spacing: 0.02em;
+
+		position: relative;
+		pointer-events: none;
+
+		&_light {
+			display: inline-block;
+			@include REM-property-start-min(margin-bottom, 20, 8);
+		}
+
+		&_bold {
+			font-weight: 400;
+
+			@media (min-width: $md2) {
+				position: absolute;
+				top: 125%;
+				left: 0;
+			}
+		}
+	}
+
+	// .why-look__arrow
+
+	&__arrow {
+		@include REM-property-start-min(padding-top, 10, 24);
+		text-align: center;
+		span {
+			display: inline-block;
+			width: 2px;
+			@include REM-property-start-min(height, 120, 50);
+			background-color: $font;
 		}
 	}
 }
